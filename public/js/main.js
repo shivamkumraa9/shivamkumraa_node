@@ -443,47 +443,47 @@ $(function() {
 /*------------------------
    Contact Form
 -------------------------- */
-var form = $('#contact-form'); // contact form
-var submit = $('#submit-btn'); // submit button
+// var form = $('#contact-form'); // contact form
+// var submit = $('#submit-btn'); // submit button
 
-// form submit event
-form.on('submit', function (e) {
-	e.preventDefault(); // prevent default form submit
-		$.ajax({
-			url: 'https://api.formcake.com/api/form/e71c4df3-0201-40dd-bee4-205fa555f8c5/submission', // form action url
-			type: 'POST', // form submit method get/post
-			dataType: 'json', // request type html/json/xml
-			data: form.serialize(), // serialize form data
-			beforeSend: function () {
-				submit.attr("disabled", "disabled");
-				// document.querySelector("#submit-btn").innerHTML = 'Sending...'
-				var loadingText = '<span role="status" aria-hidden="true" class="spinner-border spinner-border-sm align-self-center mr-2"></span>Sending.....'; // change submit button text
-				if (submit.html() !== loadingText) {
-					submit.data('original-text', submit.html());
-					submit.html(loadingText);
-				}
-			},
-			success: function (data) {
-				// document.querySelector("#submit-btn").innerHTML = 'Message Sent!'
-				submit.before(data.Message).fadeIn("slow"); // fade in response data 
-				submit.html(submit.data('original-text'));// reset submit button text
-				submit.removeAttr("disabled", "disabled");
-				form.trigger('reset'); // reset form
-				// if (data.response == 'success') {
+// // form submit event
+// form.on('submit', function (e) {
+// 	e.preventDefault(); // prevent default form submit
+// 		$.ajax({
+// 			url: 'https://api.formcake.com/api/form/e71c4df3-0201-40dd-bee4-205fa555f8c5/submission', // form action url
+// 			type: 'POST', // form submit method get/post
+// 			dataType: 'json', // request type html/json/xml
+// 			data: form.serialize(), // serialize form data
+// 			beforeSend: function () {
+// 				submit.attr("disabled", "disabled");
+// 				// document.querySelector("#submit-btn").innerHTML = 'Sending...'
+// 				var loadingText = '<span role="status" aria-hidden="true" class="spinner-border spinner-border-sm align-self-center mr-2"></span>Sending.....'; // change submit button text
+// 				if (submit.html() !== loadingText) {
+// 					submit.data('original-text', submit.html());
+// 					submit.html(loadingText);
+// 				}
+// 			},
+// 			success: function (data) {
+// 				// document.querySelector("#submit-btn").innerHTML = 'Message Sent!'
+// 				submit.before(data.Message).fadeIn("slow"); // fade in response data 
+// 				submit.html(submit.data('original-text'));// reset submit button text
+// 				submit.removeAttr("disabled", "disabled");
+// 				form.trigger('reset'); // reset form
+// 				// if (data.response == 'success') {
 					
-				// }
-				$('.sent-alert').css("display", "block")
-				setTimeout(function () {
-					$('.sent-alert').fadeOut('slow', function(){
-						$(this).css("display", "none")
-					});
-				}, 5000);
-			},
-			error: function (e) {
-				console.log(e)
-			}
-		});
-});
+// 				// }
+// 				$('.sent-alert').css("display", "block")
+// 				setTimeout(function () {
+// 					$('.sent-alert').fadeOut('slow', function(){
+// 						$(this).css("display", "none")
+// 					});
+// 				}, 5000);
+// 			},
+// 			error: function (e) {
+// 				console.log(e)
+// 			}
+// 		});
+// });
 
 
 let x = ()=> {

@@ -15,7 +15,12 @@ module.exports = {
       return res.status(404).send('Not found');
     }
     const total = await Blog.count();
-    return res.render('blog', { blogs, page, total: Math.ceil(total / limit) });
+    return res.render('blog', {
+      blogs,
+      page,
+      total: Math.ceil(total / limit),
+      title: 'Blogs',
+    });
   },
   async single(req, res) {
     const blog = await Blog.findOne({ url: req.params.url });
@@ -23,6 +28,6 @@ module.exports = {
     if (!blog) {
       return res.status(404).send('Not found');
     }
-    return res.render('single', { blog });
+    return res.render('single', { blog, title: blog.title, meta: blog.metaDescription });
   },
 };
